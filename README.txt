@@ -1,4 +1,6 @@
 # Habit_Tracking_Website
+This is a website to track habits.
+Tools: React.js, Node.js
 
 Home page
 
