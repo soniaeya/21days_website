@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4e13df1a-4e48-406e-9a53-a14165a18712" name="Changes" comment="Create react project">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/habit/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/habit/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/habit/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/habit/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/habit/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/habit/public/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/habit/public/logo192.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/habit/public/logo512.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/habit/public/manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/habit/public/robots.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/habit/src/App.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/habit/src/App.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/habit/src/App.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/habit/src/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/habit/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/habit/src/reportWebVitals.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/habit/src/setupTests.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2KkUtMfu09pPcuSYJjn7K4wlhHm" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4e13df1a-4e48-406e-9a53-a14165a18712" name="Changes" comment="" />
+      <created>1674518288153</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1674518288153</updated>
+      <workItem from="1674518290414" duration="1470000" />
+    </task>
+    <task id="LOCAL-00001" summary="update readme">
+      <created>1674518442182</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1674518442182</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Create react project">
+      <created>1674522267457</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1674522267457</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update readme" />
+    <MESSAGE value="Create react project" />
+    <option name="LAST_COMMIT_MESSAGE" value="Create react project" />
+  </component>
+</project>
