@@ -1,5 +1,5 @@
-# Habit_Tracking_Website
-This is a website to track habits.
+# 21days_Website
+The myth goes that it takes 21 days to build a habit. 21days is a website to track your habits.
 Tools: React.js, Node.js
 
 Home page
