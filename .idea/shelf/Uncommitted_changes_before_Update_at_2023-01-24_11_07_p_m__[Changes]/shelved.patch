@@ -1,0 +1,344 @@
+Index: habit/src/components/Button/Button.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/habit/src/components/Button/Button.js b/habit/src/components/Button/Button.js
+new file mode 100644
+--- /dev/null	(date 1674601155628)
++++ b/habit/src/components/Button/Button.js	(date 1674601155628)
+@@ -0,0 +1,16 @@
++import "./Button.css"
++import React from 'react';
++import NewObject from "../NewObject/NewObject";
++
++function Button(){
++    const [count, setCount] = React.useState(0);
++    function buttonClick(){
++        setCount(count + 1);
++        alert(count);
++    }
++    return(<div>
++        The {count}
++        <button onClick={buttonClick}>Button</button>
++    </div>)
++}
++export default Button;
+\ No newline at end of file
+Index: habit/src/components/Table/table.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/habit/src/components/Table/table.css b/habit/src/components/Table/table.css
+new file mode 100644
+--- /dev/null	(date 1674588942519)
++++ b/habit/src/components/Table/table.css	(date 1674588942519)
+@@ -0,0 +1,4 @@
++.container{
++    border-style: solid;
++    width: 80%;
++}
+\ No newline at end of file
+Index: habit/src/components/NewObject/ObjectForm.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/habit/src/components/NewObject/ObjectForm.js b/habit/src/components/NewObject/ObjectForm.js
+new file mode 100644
+--- /dev/null	(date 1674591059704)
++++ b/habit/src/components/NewObject/ObjectForm.js	(date 1674591059704)
+@@ -0,0 +1,28 @@
++import React from 'react';
++import "./ObjectForm.css";
++
++const ObjectForm = () => {
++    return <form>
++        <div className="new-object__controls">
++            <div className="new-object__control">
++                <label>Title</label>
++                <input type="text"/>
++            </div>
++            <div className="new-object__control">
++                <label>Amount</label>
++                <input type="Amount"/>
++            </div>
++            <div className="new-object__control">
++                <label>Date</label>
++                <input type="date"/>
++            </div>
++        </div>
++        <div className="new-expense__actions">
++            <button type="submit">Add Object</button>
++        </div>
++    </form>
++
++}
++
++
++export default ObjectForm;
+\ No newline at end of file
+Index: habit/src/components/NewObject/NewObject.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/habit/src/components/NewObject/NewObject.js b/habit/src/components/NewObject/NewObject.js
+new file mode 100644
+--- /dev/null	(date 1674591059720)
++++ b/habit/src/components/NewObject/NewObject.js	(date 1674591059720)
+@@ -0,0 +1,17 @@
++import React from 'react';
++import "./NewObject.css";
++import ObjectForm from "./ObjectForm";
++
++
++const NewObject = () => {
++    return (
++        <div className="new-expense">
++            <ObjectForm></ObjectForm>
++
++        </div>
++    )
++
++}
++
++
++export default NewObject;
+\ No newline at end of file
+Index: habit/src/components/Table/table.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/habit/src/components/Table/table.js b/habit/src/components/Table/table.js
+new file mode 100644
+--- /dev/null	(date 1674588989132)
++++ b/habit/src/components/Table/table.js	(date 1674588989132)
+@@ -0,0 +1,98 @@
++import React, { useState } from "react";
++import "./table.css"
++const Table = () => {
++    const [rows, setRows] = useState([{}]);
++    const columnsArray = ["Scenario Name", "Created By", "User Type", "Created Date", "amount"]; // pass columns here dynamically
++
++    const handleAddRow = () => {
++        const item = {};
++        setRows([...rows, item]);
++    };
++
++    const postResults = () => {
++        console.log(rows); // there you go, do as you please
++    };
++    const handleRemoveSpecificRow = (idx) => {
++        const tempRows = [...rows]; // to avoid  direct state mutation
++        tempRows.splice(idx, 1);
++        setRows(tempRows);
++    };
++
++    const updateState = (e) => {
++        let prope = e.target.attributes.column.value; // the custom column attribute
++        let index = e.target.attributes.index.value; // index of state array -rows
++        let fieldValue = e.target.value; // value
++
++        const tempRows = [...rows]; // avoid direct state mutation
++        const tempObj = rows[index]; // copy state object at index to a temporary object
++        tempObj[prope] = fieldValue; // modify temporary object
++
++        // return object to rows` clone
++        tempRows[index] = tempObj;
++        setRows(tempRows); // update state
++    };
++
++    return (
++        <div>
++            <div className="container">
++                <div className="row clearfix">
++                    <div className="col-md-12 column">
++                        <table className="table table-bordered table-hover" id="tab_logic">
++                            <thead>
++                            <tr>
++                                <th className="text-center"> # </th>
++                                {columnsArray.map((column, index) => (
++                                    <th className="text-center" key={index}>
++                                        {column}
++                                    </th>
++                                ))}
++                                <th />
++                            </tr>
++                            </thead>
++                            <tbody>
++                            {rows.map((item, idx) => (
++                                <tr key={idx}>
++                                    <td>{idx + 1}</td>
++                                    {columnsArray.map((column, index) => (
++                                        <td key={index}>
++                                            <input
++                                                type="text"
++                                                column={column}
++                                                value={rows[idx][column]}
++                                                index={idx}
++                                                className="form-control"
++                                                onChange={(e) => updateState(e)}
++
++                                            />
++                                        </td>
++                                    ))}
++
++                                    <td>
++                                        <button
++                                            className="btn btn-outline-danger btn-sm"
++                                            onClick={() => handleRemoveSpecificRow(idx)}
++                                        >
++                                            Remove Scenario
++                                        </button>
++                                    </td>
++                                </tr>
++                            ))}
++                            </tbody>
++                        </table>
++                        <button onClick={handleAddRow} className="btn btn-primary">
++                            Add Scenario
++                        </button>
++                        <button
++                            onClick={postResults}
++                            className="btn btn-success float-right"
++                        >
++                            Save Results
++                        </button>
++                    </div>
++                </div>
++            </div>
++        </div>
++    );
++};
++
++export default Table;
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"4e13df1a-4e48-406e-9a53-a14165a18712\" name=\"Changes\" comment=\"Create react project\">\r\n      <change afterPath=\"$PROJECT_DIR$/habit/src/components/Navbar/index.js\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/habit/src/pages/annual.js\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/habit/src/pages/blogs.js\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/habit/src/pages/events.js\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/habit/src/pages/index.js\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/habit/src/pages/pages.css\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/habit/src/pages/signup.js\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/habit/src/pages/team.js\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/habit/package-lock.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/habit/package-lock.json\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/habit/package.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/habit/package.json\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/habit/src/App.css\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/habit/src/App.css\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/habit/src/App.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/habit/src/App.js\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/habit/src/App.test.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/habit/src/components/Navbar/NavbarElements.js\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/habit/src/Components/Header.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/habit/src/pages/about.js\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/habit/src/index.css\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/habit/src/index.css\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"JavaScript File\" />\r\n        <option value=\"CSS File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2KkUtMfu09pPcuSYJjn7K4wlhHm\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"list.type.of.created.stylesheet\": \"CSS\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\sonia\\Desktop\\Aisun_Habit_Tracking_Website\\habit\\src\\Components\\Navbar\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"4e13df1a-4e48-406e-9a53-a14165a18712\" name=\"Changes\" comment=\"\" />\r\n      <created>1674518288153</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1674518288153</updated>\r\n      <workItem from=\"1674518290414\" duration=\"6728000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"update readme\">\r\n      <created>1674518442182</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1674518442182</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Create react project\">\r\n      <created>1674522267457</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1674522267457</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Create react project\">\r\n      <created>1674522299787</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1674522299787</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"4\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"update readme\" />\r\n    <MESSAGE value=\"Create react project\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Create react project\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 2500a1765ca2e1af593f8cefe7b7cf867574b89d)
++++ b/.idea/workspace.xml	(date 1674619468918)
+@@ -4,23 +4,17 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="4e13df1a-4e48-406e-9a53-a14165a18712" name="Changes" comment="Create react project">
+-      <change afterPath="$PROJECT_DIR$/habit/src/components/Navbar/index.js" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/habit/src/pages/annual.js" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/habit/src/pages/blogs.js" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/habit/src/pages/events.js" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/habit/src/pages/index.js" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/habit/src/pages/pages.css" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/habit/src/pages/signup.js" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/habit/src/pages/team.js" afterDir="false" />
++    <list default="true" id="4e13df1a-4e48-406e-9a53-a14165a18712" name="Changes" comment="Navbar (doesnt show text)">
++      <change afterPath="$PROJECT_DIR$/habit/src/components/Button/Button.css" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/habit/src/components/Button/Button.js" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/habit/src/components/NewObject/NewObject.css" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/habit/src/components/NewObject/NewObject.js" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/habit/src/components/NewObject/ObjectForm.css" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/habit/src/components/NewObject/ObjectForm.js" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/habit/src/components/Table/table.css" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/habit/src/components/Table/table.js" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/habit/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/habit/package-lock.json" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/habit/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/habit/package.json" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/habit/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/habit/src/App.css" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/habit/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/habit/src/App.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/habit/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/habit/src/components/Navbar/NavbarElements.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/habit/src/Components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/habit/src/pages/about.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/habit/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/habit/src/index.css" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -73,7 +67,7 @@
+       <option name="number" value="Default" />
+       <option name="presentableId" value="Default" />
+       <updated>1674518288153</updated>
+-      <workItem from="1674518290414" duration="6728000" />
++      <workItem from="1674518290414" duration="11929000" />
+     </task>
+     <task id="LOCAL-00001" summary="update readme">
+       <created>1674518442182</created>
+@@ -96,7 +90,21 @@
+       <option name="project" value="LOCAL" />
+       <updated>1674522299787</updated>
+     </task>
+-    <option name="localTasksCounter" value="4" />
++    <task id="LOCAL-00004" summary="Navbar (doesnt show text)">
++      <created>1674529206351</created>
++      <option name="number" value="00004" />
++      <option name="presentableId" value="LOCAL-00004" />
++      <option name="project" value="LOCAL" />
++      <updated>1674529206352</updated>
++    </task>
++    <task id="LOCAL-00005" summary="Navbar (doesnt show text)">
++      <created>1674529217309</created>
++      <option name="number" value="00005" />
++      <option name="presentableId" value="LOCAL-00005" />
++      <option name="project" value="LOCAL" />
++      <updated>1674529217309</updated>
++    </task>
++    <option name="localTasksCounter" value="6" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -105,6 +113,7 @@
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="update readme" />
+     <MESSAGE value="Create react project" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Create react project" />
++    <MESSAGE value="Navbar (doesnt show text)" />
++    <option name="LAST_COMMIT_MESSAGE" value="Navbar (doesnt show text)" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: habit/src/App.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react';\r\nimport './App.css';\r\nimport Navbar from './components/Navbar/index.js';\r\nimport { BrowserRouter, Routes, Route } from 'react-router-dom';\r\nimport Home from './pages';\r\nimport About from './pages/about.js';\r\nimport Events from './pages/events.js';\r\nimport AnnualReport from './pages/annual';\r\nimport Teams from './pages/team';\r\nimport Blogs from './pages/blogs';\r\nimport SignUp from './pages/signup';\r\n\r\nfunction App() {\r\n    return (\r\n        <div>\r\n\r\n            <BrowserRouter>\r\n                <Navbar />\r\n                <Routes>\r\n                    <Route path='/' exact component={Home()} />\r\n                    <Route path='/about' component={About()} />\r\n                    <Route path='/events' component={Events()} />\r\n                    <Route path='/annual' component={AnnualReport()} />\r\n                    <Route path='/team' component={Teams} />\r\n                    <Route path='/blogs' component={Blogs} />\r\n                    <Route path='/sign-up' component={SignUp} />\r\n                </Routes>\r\n            </BrowserRouter>\r\n\r\n        </div>\r\n\r\n    );\r\n}\r\n\r\nexport default App;\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/habit/src/App.js b/habit/src/App.js
+--- a/habit/src/App.js	(revision 2500a1765ca2e1af593f8cefe7b7cf867574b89d)
++++ b/habit/src/App.js	(date 1674601047013)
+@@ -9,8 +9,13 @@
+ import Teams from './pages/team';
+ import Blogs from './pages/blogs';
+ import SignUp from './pages/signup';
++import Table from "./components/Table/table.js";
++
++import NewObject from "./components/NewObject/NewObject";
++import Button from "./components/Button/Button"
+ 
+ function App() {
++
+     return (
+         <div>
+ 
+@@ -26,6 +31,10 @@
+                     <Route path='/sign-up' component={SignUp} />
+                 </Routes>
+             </BrowserRouter>
++            <Table></Table>
++
++
++            <Button></Button>
+ 
+         </div>
+ 
+diff --git a/habit/src/components/Button/Button.css b/habit/src/components/Button/Button.css
+new file mode 100644
+diff --git a/habit/src/components/NewObject/NewObject.css b/habit/src/components/NewObject/NewObject.css
+new file mode 100644
+diff --git a/habit/src/components/NewObject/ObjectForm.css b/habit/src/components/NewObject/ObjectForm.css
+new file mode 100644
