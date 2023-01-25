@@ -4,23 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4e13df1a-4e48-406e-9a53-a14165a18712" name="Changes" comment="Create react project">
-      <change afterPath="$PROJECT_DIR$/habit/src/components/Navbar/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/habit/src/pages/annual.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/habit/src/pages/blogs.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/habit/src/pages/events.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/habit/src/pages/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/habit/src/pages/pages.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/habit/src/pages/signup.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/habit/src/pages/team.js" afterDir="false" />
+    <list default="true" id="4e13df1a-4e48-406e-9a53-a14165a18712" name="Changes" comment="Navbar (doesnt show text)">
+      <change afterPath="$PROJECT_DIR$/habit/src/components/Button/Button.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/habit/src/components/Button/Button.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/habit/src/components/NewObject/NewObject.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/habit/src/components/NewObject/NewObject.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/habit/src/components/NewObject/ObjectForm.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/habit/src/components/NewObject/ObjectForm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/habit/src/components/Table/table.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/habit/src/components/Table/table.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/habit/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/habit/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/habit/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/habit/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/habit/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/habit/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/habit/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/habit/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/habit/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/habit/src/components/Navbar/NavbarElements.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/habit/src/Components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/habit/src/pages/about.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/habit/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/habit/src/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +67,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1674518288153</updated>
-      <workItem from="1674518290414" duration="6728000" />
+      <workItem from="1674518290414" duration="11929000" />
     </task>
     <task id="LOCAL-00001" summary="update readme">
       <created>1674518442182</created>
@@ -96,7 +90,21 @@
       <option name="project" value="LOCAL" />
       <updated>1674522299787</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Navbar (doesnt show text)">
+      <created>1674529206351</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1674529206352</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Navbar (doesnt show text)">
+      <created>1674529217309</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1674529217309</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -105,6 +113,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update readme" />
     <MESSAGE value="Create react project" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create react project" />
+    <MESSAGE value="Navbar (doesnt show text)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Navbar (doesnt show text)" />
   </component>
 </project>

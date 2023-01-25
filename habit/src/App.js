@@ -9,8 +9,13 @@ import AnnualReport from './pages/annual';
 import Teams from './pages/team';
 import Blogs from './pages/blogs';
 import SignUp from './pages/signup';
+import Table from "./components/Table/table.js";
+
+import NewObject from "./components/NewObject/NewObject";
+import Button from "./components/Button/Button"
 
 function App() {
+
     return (
         <div>
 
@@ -26,6 +31,10 @@ function App() {
                     <Route path='/sign-up' component={SignUp} />
                 </Routes>
             </BrowserRouter>
+            <Table></Table>
+
+
+            <Button></Button>
 
         </div>
 
